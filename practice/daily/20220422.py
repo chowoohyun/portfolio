@@ -19,39 +19,39 @@ n개의 좌표를 입력받아 십(+)자 뒤집기한 결과를 출력하는 프
 
 #2차원 배열 만들기
 
-d = []
-for i in range(20):
-    d.append([])
-    for j in range(20):
-        d[i].append(0)
+# d = []
+# for i in range(20):
+#     d.append([])
+#     for j in range(20):
+#         d[i].append(0)
 
-for i in range(19):
-    a = input().split()
-    for j in range(19):
-        d[i+1][j+1] = int(a[j])
+# for i in range(19):
+#     a = input().split()
+#     for j in range(19):
+#         d[i+1][j+1] = int(a[j])
 
-#뒤집을 번호 입력 받고, for문을 통해 위아래로 이동하면서 0은 1로 1은 0으로 바꿔주기
-n = int(input())
-for i in range(n):
-    x, y = map(int, input().split())
-    for j in range(1, 20):
-        if d[j][y]== 0:
-            d[j][y] = 1
-        else:
-            d[j][y] =0
+# #뒤집을 번호 입력 받고, for문을 통해 위아래로 이동하면서 0은 1로 1은 0으로 바꿔주기
+# n = int(input())
+# for i in range(n):
+#     x, y = map(int, input().split())
+#     for j in range(1, 20):
+#         if d[j][y]== 0:
+#             d[j][y] = 1
+#         else:
+#             d[j][y] =0
 
-        if d[x][j] == 0:
-            d[x][j] = 1
-        else:
-            d[x][j] = 0
+#         if d[x][j] == 0:
+#             d[x][j] = 1
+#         else:
+#             d[x][j] = 0
 
 
-#출력하기
+# #출력하기
 
-for i in range(1,20):
-    for j in range(1,20):
-        print(d[i][j], end=' ')
-    print()
+# for i in range(1,20):
+#     for j in range(1,20):
+#         print(d[i][j], end=' ')
+#     print()
 
 
 
