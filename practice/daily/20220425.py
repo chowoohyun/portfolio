@@ -58,5 +58,39 @@ print(title.get_text())
                 
 #     return result
 
-
+# def solution(numbers, hand):
+#     answer = ''
+#     lastL = 10
+#     lastR = 12
+    
+#     for n in numbers:
+#         if n in [1,4,7]:
+#             answer += 'L'
+#             lastL=n
+#         elif n in [3,6,7]:
+#             answer += 'R'
+#             lastR = n 
+        
+#         else:
+#             if n == 0:
+#                 n = 11
+            
+#             L_dis = abs(lastL-n)//3 + abs(lastL-n)%3
+#             R_dis = abs(lastR-n)//3 + abs(lastR-n)%3
+            
+#             if L_dis > R_dis:
+#                 answer += 'R'
+#                 lastR = n
+#             elif L_dis < R_dis:
+#                 answer +='L'
+#                 lastL = n
+#             else:
+#                 if hand == 'left':
+#                     answer += 'L'
+#                     lastL = n
+#                 else:
+#                     answer +='R'
+#                     lastR = n
+            
+#     return answer
 
