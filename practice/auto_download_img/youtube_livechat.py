@@ -17,7 +17,7 @@
 # print(author)
 # print(published)
 
-
+##2022-04-27 유투브 실시간 스트리밍 사이트 댓글 크롤링
 #공식 문서 에서 발췌
 import pytchat
 import pandas as pd
