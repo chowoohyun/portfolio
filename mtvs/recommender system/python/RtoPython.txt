@@ -1,0 +1,214 @@
+오전 
+---------------------------------------------------
+R 프로그램 	=> 	1. 연관분석 경험, 이해
+			2. R 프로그램 활용
+---------------------------------------------------
+R	=>	통계와 시각화에 집중되어있음
+R 다운로드 검색 4.2.1. for window
+https://cran.r-project.org/bin/windows/base/
+---------------------------------------------------
+대표적인 에디터
+R, R스튜디오는 프린트쪽에서 명령이 조슴 다르고
+R스튜디오가 메모리 차지가 많아서 R스튜디오에서 작업이 잘 안되면 R에서 진행
+※ R 스튜디오(R 설치후에 진행해야함) => 버전 업데이트시 R과 R스튜디오를 지우고  R > 스튜디오 순으로 재설치
+---------------------------------------------------
+작업이 끝나지 않으면 자동으로 밑줄로 이어짐 ESC를 눌러 취소시킴
+편집> GUI설정 > font설정 가능
+ctrl + l 클리어
+R은 1부터 순서를 실행함 0부터 아님
+---------------------------------------------------
+# R 스크립트 창에서 작성한 자료는 (파일> 새 스크립트)
+# 한줄의 어디든 상관없이 위치에서 Ctrl+R 또는 F5키를 누르면 consol 창으로 실행
+
+mtcars # 내장데이터 불러오기
+str(mtcars) # 내장데이터 구조 (파이썬 info)
+summary(mtcars) # 판다스의 describe 와 같음
+plot(mtcars) # 시각화 내장되어있음
+boxplot(mtcars)
+barplot(mtcars$mpg, mtcars$hp) # mpg가 1일때 hp가 20이란 값을 가지고있다.  평소 의미 없음 
+table(mtcars$cyl) # 명목형 척도로 보기 unique 하게 만든후 count
+barplot(table(mtcars$cyl)) # 값을 unique 하게 만든후 count 하여서 막대차트 작업한것  // plot로 그리면 이상해지기에 barplot로  그려야함 
+---------------------------------------------------
+R 데이터 프레임 인덱싱	객체명$필드명(변수명)
+				객체명[행,열]
+				객체명[,1] # 첫번째열 보기
+다른 자료셋일시 str(mtcars)로 구조를 봐줘야함 > R은 내부구조를 보고 작업이 가능 
+table(객체명$변수명) 을 하면 count 가 제공
+
+객체명$번수명 => 변수명만 사용하고 싶다면 메모리에 객체명을 attach 해야함.
+(일반적으로 구글에서 제공되는 블로그에서는 객체명 사용이 없는경우가 많음, attach하지 않은 상태ㅎ라면 반드시 객체명$ 해야함)
+---------------------------------------------------
+data // data() # R에서 기본제공 데이터셋 확인
+str(AirPassengers) # 시계열구조로 기존같은 작업이 불가능함
+as.data.frame(AirPassengers) # 데이터 프레임 변형 
+---------------------------------------------------
+https://cran.r-project.org/doc/manuals/r-release/R-intro.pdf
+http://elearning.kocw.net/document/r_book_v3.pdf < 이걸로 작업 
+R은 R 기초를 공부하는걸 권장
+특수한 모듈이 얼마 없음
+---------------------------------------------------
+전공자: 정보처리기사
+비전공자: 빅데이터분석기사 ( 4년제졸과 같은 자격요건)
+		=> 통계+딥러닝
+분석기사 취득이 안되는 여건일경우
+-> ADSP (데이터분석준전문가) : 통계특화
+---------------------------------------------------
+cbind concat 기능
+rbind append 기능
+---------------------------------------------------
+문자열 : 
+ - 카테고리 작업이 필요한 자료
+ - 나열되어 있는 문자인지
+
+ex) 년간 교육생 현황 (교육생 카테고리별 count가 필요한 자료)
+교육생'(문자열x,팩터)	교육
+A 		파
+A		R
+A		파
+B		R
+
+
+ex) 문자열의 경우
+파이썬 1회(3월5일) 현황 (교육생 카테고리별 count가 필요없는, 모든 교육생은 1번만 등장 )
+교육생'(문자열o)	교육
+A 		파
+A		
+A		
+B		
+
+
+교육생의견
+멀어요
+온라인으로 해주세요
+책주세요
+책이 필요합니다
+book이 있었음 합니다.
+<서로다른 자료들이기에 문자열이나 팩터가 아닌 캐릭터가 됨
+---------------------------------------------------
+
+R에서는문자열을 character 와 factor로 나눔 
+factor는 카테고리별 count가 기본제공, split안됨
+=> 카테고리를 레이블(라벨)이라 칭하고
+     라벨의 순서를 변경할수 있음
+	(서울,대전,부산) => (대전,부산,서울)
+
+character는 count제공안됨, split 됨
+---------------------------------------------------
+# r에서는 2개이상의 스칼라는 c로
+# 파이썬에[1,2,3,4,5] 와 같음 
+
+x=c(1,2,3,4,5,2,3,1,2,3,2,9)
+str(x)
+summary(x)
+x2=factor(x, levels=c(1,2,3,4))
+str(x2)
+summary(x2)
+plot(x)
+plot(factor(x)) # barplot(table(x))
+
+
+#
+score <- c(92, 90, 82, 88, 78, 64, 82, 90)
+subject <- c("k", "k", "m", "m", "m", "m", "k", "k")
+summary(subject)
+summary(score)
+table(subject)
+
+sub = as.factor(subject)
+summary(sub)
+
+subject <- c("kor", "kor", "mat", "mat", "mat", "mat", "kor", "kor")
+tmp = strsplit(subject,'') # 한글자씩 잘려서 리스트로 들어감
+
+
+subject <- c("kor", "kor", "mat", "mat", "mat", "mat", "kor", "kor")
+sub = as.factor(subject)
+# strsplit(sub,'') 불가능 
+strsplit(as.character(sub),'') # 캐릭터로 변환시 가능 
+summary(sub)
+
+
+---------------------------------------------------
+콘솔창 클릭> 파일 > 작업 디렉토리 변경 
+getwd() # 세팅된폴더 확인 
+students <- read.table("height_weight.txt", header=T)
+students 
+str(students)
+summary(students)
+boxplot(students) # 데이터값 분포도 확인 
+
+boxplot(scale(students)) # scale 명령어 기본제공 
+summary(scale(students)) # 키의 평균값보다 중간값이 작을경우 영향을 미치는 이상치가 존해한다고 볼 수 있음
+
+plot(students)
+barplot(table(students$나이))
+factor(students$나이)
+plot(factor(students$나이)) # factor는 문자열 자료로서 group by
+pie(students$나이)
+---------------------------------------------------
+R 상관도 패키지 설치 
+https://didalsgur.tistory.com/entry/R-%EC%82%B0%EC%A0%90%EB%8F%84-%EC%83%81%EA%B4%80%EA%B3%84%EC%88%98-%ED%95%9C-%EC%B0%A8%ED%8A%B8%EC%97%90-%EA%B7%B8%EB%A6%AC%EA%B8%B0-mtcars
+install.packages("psych")
+library(psych) < 서버는 코리아서버중 하나 선택
+
+pairs.panels(students, stars = TRUE,  lm =TRUE) # *가 없단건 데이터셋끼리의 유의사항이 존재하지 않음 
+stem(students$키) # 줄기잎 그리기 // 내장 모듈  ex) 160| 1234 면 161 162 163 164가 존재 
+stem(students$키, scale = 1)
+stem(students$키, scale = 2)
+---------------------------------------------------
+오후
+---------------------------------------------------
+R 스튜디오
+https://www.rstudio.com/products/rstudio/download/#download
+R studio 다운로드
+File> R Script
+Tools > Option > Appearance > 폰트세팅 (한글폰트 아닐시 한글이 조금 뒤틀려보임)
+---------------------------------------------------
+# https://kuduz.tistory.com/1080?category=834629
+# 파이썬의 판다스 역할, sql과 같은 기능을 주로 하는 패키지
+install.packages('dplyr')
+library('dplyr')
+
+
+setwd('c:/data') #디렉토리 세팅
+dir() # 디렉토리 내용보기 
+kbo <- read.csv('k.csv', sep='\t')
+head(kbo,10)
+str(kbo)
+summary(kbo)
+kbo[,2] # kbo$팀
+
+summary(factor(kbo$팀))
+barplot(summary(factor(kbo$팀)))
+
+boxplot(kbo[,3:21])  # 팀 아래로부터 int값만 보면 되기에 3부터 21까지 봐줌
+boxplot(scale(kbo[,3:21])) # 스케일해준 값
+plot(kbo)
+
+library(psych)
+pairs.panels(kbo[,3:20])
+pairs.panels(c(kbo[3,20],kbo[7,10]))# 안되는것
+c(kbo[3,20],kbo[7,10]) # 따로 봐줘야함 
+---------------------------------------------------
+%>% 는 파이프로 두개이상의 명령어를 연결하는 기능 
+
+filter(kbo, 연도==2017) %>% select(안타, X2루타, X3루타, 홈런) %>% head()
+연도가 2017년인 데이터의 안타, x2루타, x3루타, 홈런 데이터를 가져와서 상위 5개만 가져와라.
+
+filter() 데이터 행 추출 
+mutate() 새로운 열 생성 
+group_by() 그룹으로 묶어줌 > 데이터프레임의 업그레이드 버전인 tibble 형태로 만들어줌.
+summarise() 그룹바이와 함께 사용됨
+파이프 사용시 테이블에는 할당되지 않고 임시적으로만 출력됨.
+---------------------------------------------------
+연관분석, 장바구니 분석
+---------------------------------------------------
+지지도, 신뢰도, 향상도 
+신뢰도와 향성도는 지지도가 낮은게 더 좋음
+향상도는 조건1과 조건2에서 같이나온 것을 신뢰도(max1)로 나눔
+---------------------------------------------------
+def.off() # 경고 메시지 오프 
+---------------------------------------------------
+grep는 조건에 맞는 행번호를 추출
+tmp =  c(1,5,7,8)
+iloc[tmp,
