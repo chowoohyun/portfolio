@@ -1,0 +1,16 @@
+conda 가상환경 설치 방법,
+
+1. miniconda 설치, https://docs.conda.io/en/latest/miniconda.html
+
+2. 설치 후 환경 변수 추가하기, https://supermemi.tistory.com/33
+
+3. https://digiconfactory.tistory.com/entry/%EB%AF%B8%EB%8B%88%EC%BD%98%EB%8B%A4Miniconda-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0-%ED%8C%8C%EC%9D%B4%EC%8D%AC-%ED%8C%A8%ED%82%A4%EC%A7%80%EA%B4%80%EB%A6%AC
+
+4. conda create -n 가상환경이름 python=3.7 (추천)
+
+5. conda activate 가상환경이름    // 삭제 방법 : conda env remove -n testVenv 
+
+6. conda update -n base conda, conda update --all, python -m pip install --upgrade pip
+
+7. conda install -c conda-forge jupyter
+

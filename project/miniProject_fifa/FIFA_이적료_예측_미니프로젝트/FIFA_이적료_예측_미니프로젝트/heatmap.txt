@@ -1,0 +1,67 @@
+!pip install folium
+
+
+#패키지 heatmap
+import folium
+from folium import plugins
+
+
+# 세계지도 생성, 세계적으로 찍을 예정이기 때문에 따로 위도 경도는 지정해주지 않음
+map = folium.Map(zoom_start= 30)
+
+
+#train 데이터 불러 오는 함수,
+train_df = pd.read_csv('FIFA_train.csv')
+test_df = pd.read_csv('.\\data\\FIFA_test.csv')
+
+#필요한 자료만 불러옴, 대륙 정보, 대륙의 가중치 정보,
+map_df = train_df[['continent']]
+tmp  = map_df['continent'].value_counts()
+tmp_df = pd.DataFrame(tmp)
+
+
+#나라 별로 map 함수를 통해위도 값을 넣어주기 위한 함수
+def converting(continent):
+    if continent == 'south america':
+        return -12.785707
+    elif continent == 'europe':
+        return 47.710319
+    elif continent == 'africa':
+        return 9.907480
+    elif continent == 'oceania':
+        return -27.270950
+    else:
+        return 37.5666805
+
+#나라별로 map 함수를 통해 경도 값을 넣어주기 위한 함수
+def convert2(continent):
+    if continent == 'south america':
+        return -57.647070
+    elif continent == 'europe':
+        return 6.986008
+    elif continent == 'africa':
+        return 20.315757
+    elif continent == 'oceania':
+        return 136.331382
+    else:
+        return 126.9784147
+
+#맵 함수를 통해 위도와 경도를 데이터프레임에 추가해줌,
+tmp_df['latitude'] = tmp_df['continent'].index.map(lambda x : converting(x))
+tmp_df['longitude'] = tmp_df['continent'].index.map(lambda x : convert2(x))
+map_df=tmp_df.copy()
+
+#folium 패키지를 활용하여 위도 경도 가중치를 입력, heat map을 그림
+map.add_child(plugins.HeatMap(zip(map_df['latitude'],map_df['longitude'],map_df['continent']), radius=20))
+
+
+# 작업 하며 느낀점
+## 대륙이기 때문에 위도 경도가 애매하다.
+### 나라 별로 찍으면 좀 더 좋은 자료가 나올 것 같지만, 현재 가지고 있는 자료로는 적당한 위치에만 찍을수 밖에 없는 한계
+#### 나라 별로 구성해서 찍을순 있지만 시간이 오래 걸릴거 같아서 pass......
+
+
+# 시각화에 집중한 이유는, 이번 시간 이후로는 시각화에 이정도로 집중해볼 이유가 없을거 같아서,
+# 시각화 쪽으로 많은 인사이트가 발견되어, 시각화쪽으로 힘을 주어 진행하게 되었다.
+# 아마 발표 끝나고 나면 강사님께서 질문을 여러가지 하실것 같은데 그거에 대해서 여러가지로 준비해야 할듯 합니다.
+# 짧은 프로젝트지만 각자 진행 하면서 느낀점, 학습 돌리면서 느낀점 같은것들 짧게나마 적으면 좋을듯 합니다. ( 그냥 제안.. )

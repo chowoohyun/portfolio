@@ -1,0 +1,25 @@
+1. FIFA_train.csv / FIFA_test.csv
+ id : 선수 고유의 아이디
+ name : 이름
+ age : 나이
+ continent : 선수들의 국적이 포함되어 있는 대륙입니다
+ contract_until : 선수의 계약기간이 언제까지인지 나타내어 줍니다
+ position : 선수가 선호하는 포지션입니다. ex) 공격수, 수비수 등
+ prefer_foot : 선수가 선호하는 발입니다. ex) 오른발
+ reputation : 선수가 유명한 정도입니다. ex) 높은 수치일 수록 유명한 선수
+ stat_overall : 선수의 현재 능력치 입니다.
+ stat_potential : 선수가 경험 및 노력을 통해 발전할 수 있는 정도입니다.
+ stat_skill_moves : 선수의 개인기 능력치 입니다.
+ value : FIFA가 선정한 선수의 이적 시장 가격 (단위 : 유로) 입니다
+
+
+position  // value.mean
+
+stat_overall, stat_potential ,  stat_skill_moves 
+
+age // stat_potential
+
+continent+(국적)별 실력이나  개인능력치 , value
+
+
+
