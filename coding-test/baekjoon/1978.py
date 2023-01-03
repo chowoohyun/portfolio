@@ -46,3 +46,19 @@ def prime_number_4(x):
             while i * j < n:
                 array[i*j] = False
                 j += 1
+
+# 백준 소수 찾기
+
+n = int(input())
+data = list(map(int, input().split()))
+count = 0
+
+for x in data:
+  for i in range(2, x+1):
+    if x % i == 0:
+      if x == i:
+        count += 1
+      
+      break
+
+print(count)
