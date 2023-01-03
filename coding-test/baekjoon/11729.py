@@ -10,4 +10,4 @@ def hanoi(num, start, end):
 N = int(input())
 
 print(2**N -1)
-hanoi(N, 1, 3)
+hanoi(N, 1, 3) 
