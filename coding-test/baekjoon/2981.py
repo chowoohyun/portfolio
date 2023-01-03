@@ -1,16 +1,19 @@
 N = int(input())
 
 num_list = []
+answer = []
 for _ in range(N):
     num_list.append(int(input()))
 
 
+for i in range(2, num_list[-1]):
+    num_list = [num % i for num in num_list]
+    if len(set(num_list)) == 1:
+        answer.append(i)
+        print(i, answer)
+    else:
+        continue
 
-for j in num_list[-1]:
-    for i in range(N-1):
-        if num_list[i] % j != num_list[i+1] % j:
-            break
-
-        if i == N-2:
-            print(j, end=' ')
+for i in answer:
+    print(i, end=' ')
 
