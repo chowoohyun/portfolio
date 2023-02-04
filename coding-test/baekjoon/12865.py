@@ -14,7 +14,6 @@ n, k = map(int, input().split())
 
 x = [[0,0]]
 d = [[0]*(k+1) for _ in range(n+1)]
-#print(d)
 
 for i in range(n):
     x.append(list(map(int, input().split())))
