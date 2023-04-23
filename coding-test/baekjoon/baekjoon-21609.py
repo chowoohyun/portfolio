@@ -7,6 +7,7 @@
 # zip 으로 회전가능 신박하다
 
 from collections import deque
+
 N, M = map(int, input().split())
 arr = [[0]*N for _ in range(N)]
 for i in range(N):
@@ -51,6 +52,7 @@ def find_Max():
                     visit[zero[0]][zero[1]] = False
     if not maxStart:
         return 0
+    
     if maxVal <= 1:
         return 0
     maxStart.sort()
